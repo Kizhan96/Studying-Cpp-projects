@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+int diagonal_elements_sum(int** &Arr, int row, int col); //diagonal elements sum func prototype
+
+int main()
+{
+    int temp = 0, col = 0, row = 0; //initializing variables
+    cout << "Input array number of colomns: ";
+    cin >> col;
+    cout << "Input array number of rows: ";
+    cin >> row;
+
+    int **Array = new int* [row]; //allocating memory for a dynamic 2D array
+       for (int count = 0; count < row; count++)
+           Array[count] = new int [col];
+
+    for (int count_row = 0; count_row <= row-1; count_row++) //filling array
+        for (int count_col = 0; count_col <= col-1; count_col++)
+        {
+            cout << "Input " << count_row << count_col << " element: ";
+            cin >> temp;
+            Array[count_row][count_col] = temp;
+        }
+
+    for (int count_row = 0; count_row <= row-1; count_row++) //output array
+    {
+        for (int count_col = 0; count_col <= col-1; count_col++)
+        {
+            cout << Array[count_row][count_col] << ' ';
+        }
+        cout << endl;
+    }
+
+    cout << "Sum: " << diagonal_elements_sum(Array, row, col) << endl;
+
+    return (0);
+}
+
+int diagonal_elements_sum(int** &Arr, int row, int col) //counting sum of upper-left to lower-right diagonal array elements
+{
+    int sum = 0;
+    for (int count_row = 0; count_row <= row-1; count_row++)
+        for (int count_col = 0; count_col <= col-1; count_col++)
+        {
+            if (count_row == count_col)
+            {
+                sum += Arr[count_row][count_col];
+            }
+        }
+    return sum;
+}
