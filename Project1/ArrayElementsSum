@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int sum_function(int Arr[], int size); //sum func prototype
+
+int main()
+{
+    int num = 0, temp = 0; //initializing variables: num is number of array elements, temp is temporary variable to fill array
+    cout << "Input number of array elements: ";
+    cin >> num;
+
+    int *Array= new int [num]; //allocating memory for a dynamic array of elements
+
+    for (int i = 0; i<= num-1; i++) //filling array
+    {
+        cout << "Input " << i << " element of array: ";
+        cin >> temp;
+        Array[i] = temp;
+    }
+
+    cout << "Array elements: ";
+    for (int i = 0; i<= num-1; i++) //output array elements to a console
+    {
+        cout << Array[i] << ' ';
+    }
+
+    cout << "\nSum of the elements is: " << sum_function(Array, num) << endl;
+
+    delete[] Array; //freeing memory
+    return (0);
+}
+
+int sum_function(int Arr[], int size) //counting sum of array elements
+{
+    int sum = 0;
+    for (int i = 0; i <= size; i++)
+    {
+        sum += Arr[i];
+    }
+    return  sum;
+}
