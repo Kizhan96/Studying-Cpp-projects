@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+float x, y;
+float function(float x, float y);
+
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    int num;
+    cout << "Введите Автоматическую и Статичекую переменные: "; cin >> x >> y;
+    cout << "Введите количество выводов: "; cin >> num;
+    cout << endl;
+
+    for (int i = 1; i <= num; i++)
+    {
+        function(x, y);
+        cout << endl;
+    }
+    return (0);
+}
+
+float function(float x, float y)
+{
+    float auto_var = x;
+    static float static_var = y;
+    auto_var++;
+    static_var++;
+    cout << "Auto = " << auto_var << endl << "Static = " << static_var << endl;
+    return 0;
+}
