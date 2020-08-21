@@ -32,6 +32,18 @@ int main()
     input_arr_elements(Array2, rows, colomns);
     Sum_func(Array1, Array2, Array3, rows, colomns);
     output_arr_elements(Array3, rows, colomns);
+    
+    delete [] Array1[rows];
+    for (int count_row = 0; count_row <= rows; count_row++)
+        delete [] Array1[count_row];
+    
+    delete [] Array2[rows];
+    for (int count_row = 0; count_row <= rows; count_row++)
+        delete [] Array2[count_row];
+        
+    delete [] Array3[rows];
+    for (int count_row = 0; count_row <= rows; count_row++)
+        delete [] Array3[count_row];
 
     return 0;
 }
