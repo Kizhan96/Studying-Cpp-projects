@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+void Sum_func(int** &arr1, int* arr2, int rows, int columns);
+void input_arr_elements(int** &arr_name, int rows, int columns);
+void output_arr_elements(int* &arr_name, int rows);
+
+int main()
+{
+    int rows, columns;
+    cout << "Input array size: ";
+    cin >> rows >> columns;
+    rows--;
+    columns--;
+
+    int** Array1 = new int* [rows];
+    for (int i = 0; i <= rows; i++){
+        Array1[i] = new int[columns];
+    }
+
+    int *Array2 = new int[columns];
+
+    input_arr_elements(Array1, rows, columns);
+
+    Sum_func(Array1, Array2, rows, columns);
+
+    output_arr_elements(Array2, rows);
+
+    for (int count_row = 0; count_row <= rows; count_row++)
+        delete [] Array1[count_row];
+    delete [] Array2;
+
+    return 0;
+}
+
+void Sum_func(int** &arr1, int* arr2, int rows, int columns){
+    int sum = 0;
+    for (int count_row = 0; count_row <= rows; count_row++){
+        sum = 0;
+        for (int count_col = 0; count_col <= columns; count_col++){
+            sum += arr1[count_row][count_col];
+
+        }
+        arr2[count_row] = sum;
+    }
+}
+
+void input_arr_elements(int** &arr_name, int rows, int columns){
+    for (int count_row = 0; count_row <= rows; count_row++){
+        for (int count_col = 0; count_col <= columns; count_col++){
+            cin >> arr_name[count_row][count_col];
+        }
+    }
+}
+
+void output_arr_elements(int* &arr_name, int rows){
+    for (int count_row = 0; count_row <= rows; count_row++){
+        cout << arr_name[count_row] << ' ';
+     }
+    cout << endl;
+}
