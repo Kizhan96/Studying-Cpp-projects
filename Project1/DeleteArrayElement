@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr_size, del_elem_index;
+    cout << "Input array size: ";
+    cin >> arr_size;
+    cout << "Input index of the element to delete: ";
+    cin >> del_elem_index;
+
+    int *Array1 = new int [arr_size];
+
+    for (int arr_counter = 0; arr_counter <= arr_size - 1; arr_counter++)
+    {
+        cin >> Array1[arr_counter];
+    }
+
+    for (int arr_counter = 0; arr_counter <= arr_size - 1; arr_counter++)
+    {
+        cout << Array1[arr_counter] << ' ';
+    }
+
+    cout << endl;
+
+    for (int arr_counter = del_elem_index - 1; arr_counter <= arr_size - 1; arr_counter++)
+    {
+        Array1[arr_counter] = Array1[arr_counter+1];
+    }
+
+    for (int arr_counter = 0; arr_counter <= arr_size - 2; arr_counter++)
+    {
+        cout << Array1[arr_counter] << ' ';
+    }
+
+
+    delete [] Array1;
+
+    return 0;
+}
