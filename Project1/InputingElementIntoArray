@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr_size, input_elem_index, var;
+    cout << "Input array size: ";
+    cin >> arr_size;
+    cout << "Input index of the element to unput: ";
+    cin >> input_elem_index;
+    cout << "Input value: ";
+    cin >> var;
+
+    int *Array1 = new int [arr_size]; //allocating memory
+
+    for (int arr_counter = 0; arr_counter <= arr_size - 1; arr_counter++) //filling the array
+        cin >> Array1[arr_counter];
+
+    cout << "Array: ";
+    for (int arr_counter = 0; arr_counter <= arr_size - 1; arr_counter++) //output the array before inputing
+        cout << Array1[arr_counter] << ' ';
+
+    cout << endl;
+
+    for (int arr_counter = arr_size; arr_counter >= input_elem_index; arr_counter--) //making space for a new element by shifting old elements
+        Array1[arr_counter] = Array1[arr_counter - 1];
+        Array1[input_elem_index - 1] = var; //inputing variable in the array
+
+
+    for (int arr_counter = 0; arr_counter <= arr_size; arr_counter++) //output array after inputing a new element
+        cout << Array1[arr_counter] << ' ';
+
+    delete [] Array1; //freeing allocated memory
+    return 0;
+}
