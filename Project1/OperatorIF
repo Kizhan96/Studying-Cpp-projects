@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int columns, rows, var, counter = 0;
+    cout << "Input array rows and columns: ";
+    cin >> rows >> columns;
+    rows--; columns--;
+    cout << "Input value to find: ";
+    cin >> var;
+
+    int **Array1 = new int* [rows]; //allocating memory
+    for (int arr_counter = 0; arr_counter <= rows; arr_counter++)
+        Array1[arr_counter] = new int [columns];
+
+    cout << "Input array1 elements: ";
+    for (int count_row = 0; count_row <= rows; count_row++) //filling an array
+        for (int count_col = 0; count_col <= columns; count_col++)
+            cin >> Array1[count_row][count_col];
+
+    for (int count_row = 0; count_row <= rows; count_row++) //multiplication algorythm
+    {
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+           if (Array1[count_row][count_col] == var)
+           {
+               counter++;
+           }
+        }
+    }
+
+    cout << "Array: " << counter << endl;
+
+
+    for (int count_row = 0; count_row <= rows; count_row++)
+            delete [] Array1[count_row];
+
+    return 0;
+}
