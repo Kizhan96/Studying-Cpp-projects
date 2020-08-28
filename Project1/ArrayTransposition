@@ -48,5 +48,9 @@ int main()
 
     for (int count_row = 0; count_row <= rows; count_row++)
             delete [] Array1[count_row];
+            
+    for (int count_row = 0; count_row <= rows; count_row++)
+            delete [] Array2[count_row];
+            
     return 0;
 }
