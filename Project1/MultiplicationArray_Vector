@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int columns, rows, temp = 0;
+    cout << "Input array rows and columns: ";
+    cin >> rows >> columns;
+    rows--; columns--;
+
+    int **Array1 = new int* [rows]; //allocating memory
+    for (int arr_counter = 0; arr_counter <= rows; arr_counter++)
+        Array1[arr_counter] = new int [columns];
+
+    int *Array2 = new int [rows]; //allocating memory
+
+    int *Array3 = new int [rows];
+
+    cout << "Input array1 elements: ";
+    for (int count_row = 0; count_row <= rows; count_row++) //filling an array
+        for (int count_col = 0; count_col <= columns; count_col++)
+            cin >> Array1[count_row][count_col];
+
+    cout << "Input array2 elements: ";
+    for (int count_row = 0; count_row <= rows; count_row++)
+    {
+        cin >> Array2[count_row];
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++) //multiplication algorythm
+    {
+        temp = 0;
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+           temp += Array1[count_row][count_col] * Array2[count_col];
+        }
+        Array3[count_row] = temp;
+    }
+
+    cout << "Array 3: ";
+    for (int count_row = 0; count_row <= rows; count_row++) //output the array before inputing
+    {
+        cout << Array3[count_row] << ' ';
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++)
+            delete [] Array1[count_row];
+    delete [] Array2;
+    delete [] Array3;
+    return 0;
+}
