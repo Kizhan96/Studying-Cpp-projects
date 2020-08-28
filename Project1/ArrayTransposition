@@ -28,7 +28,7 @@ int main()
     cout << endl;
     }
 
-    for (int count_row = 0; count_row <= rows; count_row++) //filling an array
+    for (int count_row = 0; count_row <= rows; count_row++) //replacing algorythm
     {
         for (int count_col = 0; count_col <= columns; count_col++)
         {
@@ -39,7 +39,7 @@ int main()
     }
 
     cout << "Array 2: " << endl;
-    for (int arr_row = 0; arr_row <= rows; arr_row++) //output the array before inputing
+    for (int arr_row = 0; arr_row <= rows; arr_row++) //output the second array
     {
         for (int arr_col = 0; arr_col <= columns; arr_col++)
             cout << Array2[arr_row][arr_col] << ' ';
