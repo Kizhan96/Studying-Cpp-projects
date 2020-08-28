@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int columns, rows, temp = 0;
+    cout << "Input array rows and columns: ";
+    cin >> rows >> columns;
+    rows--; columns--;
+
+    int **Array1 = new int* [rows]; //allocating memory for array1
+    for (int arr_counter = 0; arr_counter <= rows; arr_counter++)
+        Array1[arr_counter] = new int [columns];
+
+    cout << "Input array1 elements: ";
+    for (int count_row = 0; count_row <= rows; count_row++) //filling an array1
+        for (int count_col = 0; count_col <= columns; count_col++)
+            cin >> Array1[count_row][count_col];
+
+    for (int count_row = 0; count_row <= rows; count_row++) //invet columns algorythm
+    {
+        for (int count_col = 0; count_col <= columns / 2; count_col++)
+        {
+           temp = Array1[count_row][count_col];
+           Array1[count_row][count_col] = Array1[count_row][columns - count_col];
+           Array1[count_row][columns - count_col] = temp;
+        }
+    }
+
+    for (int count_row = 0; count_row <= rows / 2; count_row++) //invert rows algorythm
+    {
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+           temp = Array1[count_row][count_col];
+           Array1[count_row][count_col] = Array1[rows - count_row][count_col];
+           Array1[rows - count_row][count_col] = temp;
+        }
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++) //output
+    {
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+            cout << Array1[count_row][count_col] << ' ';
+        }
+        cout << endl;
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++)
+        delete [] Array1[count_row];
+
+    return 0;
+}
