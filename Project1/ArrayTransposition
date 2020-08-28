@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int columns, rows, temp = 0;
+    cout << "Input array rows and columns: ";
+    cin >> rows >> columns;
+    rows--; columns--;
+
+    int **Array1 = new int* [rows]; //allocating memory
+    for (int arr_counter = 0; arr_counter <= rows; arr_counter++)
+        Array1[arr_counter] = new int [columns];
+
+    int **Array2 = new int* [rows]; //allocating memory
+    for (int arr_counter = 0; arr_counter <= rows; arr_counter++)
+        Array2[arr_counter] = new int [columns];
+
+    for (int count_row = 0; count_row <= rows; count_row++) //filling an array
+        for (int count_col = 0; count_col <= columns; count_col++)
+            cin >> Array1[count_row][count_col];
+
+    cout << "Array: " << endl;
+    for (int arr_row = 0; arr_row <= rows; arr_row++) //output the array before inputing
+    {
+        for (int arr_col = 0; arr_col <= columns; arr_col++)
+            cout << Array1[arr_row][arr_col] << ' ';
+    cout << endl;
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++) //filling an array
+    {
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+            temp = Array1[count_row][count_col];
+            Array2[count_row][count_col] = Array1[count_col][count_row];
+            Array1[count_col][count_row] = temp;
+        }
+    }
+
+    cout << "Array 2: " << endl;
+    for (int arr_row = 0; arr_row <= rows; arr_row++) //output the array before inputing
+    {
+        for (int arr_col = 0; arr_col <= columns; arr_col++)
+            cout << Array2[arr_row][arr_col] << ' ';
+    cout << endl;
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++)
+            delete [] Array1[count_row];
+    return 0;
+}
