@@ -1,0 +1,114 @@
+#include <iostream>
+using namespace std;
+
+void shift_to_the_left_1_pos(int arr[], int size);
+void shift_to_the_right_1_pos(int arr[], int size);
+
+int main()
+{
+    int columns, rows, value, counter = 0;
+    string side;
+
+    cout << "Input array rows and columns: ";
+    cin >> rows >> columns;
+    rows--; columns--;
+    cout << "Input shift number: ";
+    cin >> value;
+    value--;
+
+    cout << "Which way to shift array?(type left or right): ";
+    cin >> side;
+
+    int **Array1 = new int* [rows]; //allocating memory for array1
+    for (int arr_counter = 0; arr_counter <= rows; arr_counter++)
+        Array1[arr_counter] = new int [columns];
+
+    int *Array2 = new int [rows]; //allocating memory for array2
+
+    cout << "Input array1 elements: ";
+    for (int count_row = 0; count_row <= rows; count_row++) //filling an array1
+        for (int count_col = 0; count_col <= columns; count_col++)
+            cin >> Array1[count_row][count_col];
+
+    for (int count_row = 0; count_row <= rows; count_row++) //making 1d array from 2d
+    {
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+            Array2[counter] = Array1[count_row][count_col];
+            counter++;
+        }
+    }
+
+    if (side == "left")
+    {
+        cout << "Shifting to the left" << endl;
+        for (int i = 0; i <= value; i++)
+        shift_to_the_left_1_pos(Array2, counter);
+    }
+    else if (side == "right")
+    {
+        cout << "Shifting to the right." << endl;
+        for (int i = 0; i <= value; i++)
+        shift_to_the_right_1_pos(Array2, counter);
+    }
+    else
+    {
+        cout << "Error!";
+    }
+    cout << endl;
+
+    counter = 0;
+    for (int count_row = 0; count_row <= rows; count_row++) //making 1d array from 2d
+    {
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+            Array1[count_row][count_col] = Array2[counter];
+            counter++;
+        }
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++) //making 1d array from 2d
+    {
+        for (int count_col = 0; count_col <= columns; count_col++)
+        {
+            cout << Array1[count_row][count_col] << ' ';
+        }
+        cout << endl;
+    }
+
+    for (int count_row = 0; count_row <= rows; count_row++)
+        delete [] Array1[count_row];
+    delete [] Array2;
+
+    return 0;
+}
+
+void shift_to_the_left_1_pos(int arr[], int size)
+{
+    int counter = 0, temp, first_el;
+
+    first_el = arr[counter];
+    do
+    {
+        temp = arr[counter];
+        arr[counter] = arr[counter + 1];
+        arr[counter + 1] = temp;
+        counter++;
+    }while (counter != size - 1);
+    arr[size - 1] = first_el;
+}
+
+void shift_to_the_right_1_pos(int arr[], int size)
+{
+    int counter = size, temp, last_el;
+
+    last_el = arr[counter - 1];
+    do
+    {
+        temp = arr[counter];
+        arr[counter] = arr[counter - 1];
+        arr[counter - 1] = temp;
+        counter--;
+    }while (counter != 0);
+    arr[0] = last_el;
+}
