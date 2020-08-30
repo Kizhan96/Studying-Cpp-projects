@@ -1,0 +1,19 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int int_var = 2;
+    float float_var = 2.2;
+
+    int *int_ptr = &int_var;
+    float *float_ptr = &float_var;
+
+    cout << setw(5) << left << "ID" << setw(22) << left << "Name" << setw(11) << "Value" << setw(11) << "Address" << endl;
+    cout << setw(5) << '1' << setw(22) << "Int" << setw(11) << *int_ptr << setw(11) << int_ptr << endl;
+    cout << setw(5) << '2' << setw(22) << "Float" << setw(11) << *float_ptr << setw(11) << float_ptr << endl;
+
+    cout << endl;
+
+    return 0;
+}
