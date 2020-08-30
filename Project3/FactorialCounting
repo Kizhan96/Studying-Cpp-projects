@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int factorial_func(int num);
+
+int main() {
+    int var;
+
+    cout << "Input number to count factorial: ";
+    cin >> var;
+
+    cout << "Factorial of " << var << " is: " << factorial_func(var) << endl;
+
+    return 0;
+}
+
+int factorial_func(int num){
+    if (num == 0){
+        return 1;
+    }
+    else if (num == 1) {
+        return 1;
+    }
+    else {
+        return num = num * factorial_func(num - 1);
+    }
+}
+
