@@ -1,0 +1,26 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int *array = new int[5];
+    int *sum_array = new int[5];
+    int even_arr_counter = 0;
+
+    for (int counter = 0; counter <= 4; counter++){
+        cout << "Input " << counter+1 << " element: ";
+        cin >> array[counter];
+    }
+
+    for (int counter = 0; counter <= 5; counter += 2){
+            sum_array[even_arr_counter] = array[counter + 1] + array[counter];
+            even_arr_counter++;
+    }
+    cout << endl;
+
+    for (int counter = 0; counter <= even_arr_counter - 1; counter++){
+        cout << sum_array[counter] << ' ';
+    }
+
+    return 0;
+}
