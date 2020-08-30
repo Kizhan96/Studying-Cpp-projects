@@ -1,0 +1,21 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int int_var;
+    float float_var;
+    long int long_var;
+    unsigned int uns_var;
+    double double_var;
+
+    cout << setw(5) << left << "ID" << setw(22) << left << "Name" << setw(11) << "Size" << endl;
+    cout << setw(5) << '1' << setw(22) << "Int" << setw(11) << sizeof (int_var) << endl;
+    cout << setw(5) << '2' << setw(22) << "Float" << setw(11) << sizeof (float_var) << endl;
+    cout << setw(5) << '3' << setw(22) << "Long" << setw(11) << sizeof (long_var) << endl;
+    cout << setw(5) << '4' << setw(22) << "Unsigned int" << setw(11) << sizeof (uns_var) << endl;
+    cout << setw(5) << '5' << setw(22) << "Double" << setw(11) << sizeof (double_var) << endl;
+    cout << endl;
+
+    return 0;
+}
