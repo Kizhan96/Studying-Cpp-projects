@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "ru");
+    char enter[200]; //string
+    cin.getline(enter, 200); //string input
+    int kol[256] = { 0 }; //array of all symbols
+
+    for (int i = 0; enter[i] != 0; i++) //
+        kol[enter[i]]++; //symbol code as index
+
+    for (int i = 0; i < 256; i++) //output cycle
+        if (kol[i] != 0)
+            cout << (char)i << " встречется " << kol[i] << " раз\n";
+    return 0;
+}
